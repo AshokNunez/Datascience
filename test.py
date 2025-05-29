@@ -19,6 +19,7 @@ try:
         data_to_insert
     )
     conn.commit()
+    conn.close()
     print("Data inserted successfully.")
 except pyodbc.Error as e:
     print("Error while connecting to SQL Server:", e)   
