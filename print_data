@@ -1,0 +1,18 @@
+import pyodbc
+
+try:
+    conn = pyodbc.connect(
+        'DRIVER={SQL Server};'
+        'SERVER=localhost;'
+        'DATABASE=YourDatabaseName;'
+        'UID=YourUsername;'
+        'PWD=YourPassword;'
+    )
+    cursor = conn.cursor()
+    # Fetch and print all rows from the table
+    cursor.execute("SELECT * FROM testTable")
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+except pyodbc.Error as e:
+    print("Error while connecting to SQL Server:", e)
